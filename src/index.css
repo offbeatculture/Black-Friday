@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 24 100% 60%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 142 76% 36%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 142 76% 36%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 24 100% 60%;
+
+    --radius: 0.75rem;
+
+    /* Black Friday specific colors */
+    --orange: 24 100% 60%;
+    --orange-light: 30 100% 65%;
+    --yellow: 45 100% 60%;
+    --neon-green: 142 76% 36%;
+    --neon-green-light: 142 76% 45%;
+
+    /* Gradients */
+    --gradient-orange: linear-gradient(135deg, hsl(24 100% 60%), hsl(30 100% 65%), hsl(45 100% 60%));
+    --gradient-radial: radial-gradient(circle at 50% 50%, hsl(24 100% 60% / 0.15), transparent 70%);
+    
+    /* Shadows & Effects */
+    --glow-orange: 0 0 40px hsl(24 100% 60% / 0.4);
+    --glow-green: 0 0 30px hsl(142 76% 36% / 0.6);
+    --glow-card: 0 10px 40px hsl(24 100% 60% / 0.2);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@keyframes slow-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* small, gentle jump */
+  }
+}
+
+/* custom class only for the mentor card bounce */
+.mentor-bounce {
+  animation: slow-bounce 0.7s ease-in-out infinite;
+}
