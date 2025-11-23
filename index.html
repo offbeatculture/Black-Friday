@@ -15,23 +15,18 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@Lovable" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
 <script>
-  // This decodes the GitHub Pages SPA redirect format "?/path"
-  (function(l) {
-    if (l.search && l.search.startsWith("?/")) {
-      var decoded = l.search
-        .slice(2)
-        .split("&")
-        .map(function(s) {
-          return s.replace(/~and~/g, "&");
-        })
-        .join("?");
-      
-      // Restore clean URL
-      window.history.replaceState(null, null, "/" + decoded + l.hash);
-    }
-  })(window.location);
-</script>
+      (function () {
+        var m = /[?&]p=([^&]+)/.exec(location.search);
+        if (m) {
+          var path = decodeURIComponent(m[1]);
+          var h = /[?&]h=([^&]+)/.exec(location.search);
+          if (h) path += decodeURIComponent(h[0].slice(3));
+          history.replaceState(null, "", path);
+        }
+      })();
+    </script>
 
     <script type="module" crossorigin src="/assets/index-D8JK-0EH.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-C178Kos3.css">

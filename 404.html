@@ -1,31 +1,12 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Redirecting…</title>
-    <script>
-      // spa-github-pages fallback
-      // https://github.com/rafgraph/spa-github-pages
-      var pathSegmentsToKeep = 0; // 0 because you're on a subdomain/root
-
-      var l = window.location;
-      l.replace(
-        l.protocol + "//" + l.host +
-          l.pathname
-            .split("/")
-            .slice(0, 1 + pathSegmentsToKeep)
-            .join("/") +
-          "/?/" +
-          l.pathname
-            .slice(1)
-            .split("/")
-            .slice(pathSegmentsToKeep)
-            .join("/")
-            .replace(/&/g, "~and~") +
-          (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
-          l.hash
-      );
-    </script>
-  </head>
-  <body>Redirecting…</body>
-</html>
+<!doctype html><html><head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Redirecting…</title>
+<script>
+  (function () {
+    var l = window.location;
+    var q = l.search ? l.search + "&" : "?";
+    q += "p=" + encodeURIComponent(l.pathname) +
+         (l.hash ? "&h=" + encodeURIComponent(l.hash) : "");
+    l.replace(l.protocol + "//" + l.host + "/" + q);
+  })();
+</script></head><body>Redirecting…</body></html>
